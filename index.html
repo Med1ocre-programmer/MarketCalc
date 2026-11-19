@@ -157,6 +157,13 @@
             display: block;
         }
     
+        .calculation-details {
+            color: #ffffff;
+            font-size: 13px;
+            margin-top: 5px;
+            margin-bottom: -5px;
+        }
+
         .result-label {
             color: #b9e8d1;
             font-size: 14px;
@@ -164,10 +171,10 @@
     
         .result-row {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
             gap: 10px;
-            margin-top: 5px;
+            margin-top: 0;
         }
     
         .result-value {
@@ -282,10 +289,12 @@
 
         <div class="result" id="result">
             <div class="result-label">Цена продажи</div>
-
+        
+            <div class="calculation-details" id="calculation-details"></div>
+        
             <div class="result-row">
                 <span class="result-value" id="output">—</span>
-
+        
                 <button class="copy-button" id="copy">
                     Копировать
                 </button>
@@ -306,6 +315,7 @@
     const priceInput = document.getElementById("price");
     const resultBox = document.getElementById("result");
     const output = document.getElementById("output");
+    const calculationDetails = document.getElementById("calculation-details");
     const errorBox = document.getElementById("error");
     const copyButton = document.getElementById("copy");
 
@@ -374,6 +384,9 @@
         }
 
         const cents = calculateCents(price, markup);
+
+        calculationDetails.textContent =
+            `${priceInput.value.trim()} + ${markupInput.value.trim()}% =`;
 
         output.textContent = formatEuro(cents);
         resultBox.classList.add("visible");
