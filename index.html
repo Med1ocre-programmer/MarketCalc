@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111827">
+    <meta name="description" content="MarketCalc — калькулятор наценки для Supermarket Together.">
+    <title>MarketCalc — Калькулятор наценки</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 25px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0b1020;
+            color: #f3f6fc;
+            font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .logo {
+            display: inline-flex;
+            width: 60px;
+            height: 60px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            background: #7cdbad;
+            color: #10251d;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        h1 {
+            margin: 12px 0 3px;
+            font-size: 30px;
+        }
+
+        .subtitle {
+            color: #a7b3c8;
+            margin: 0;
+        }
+
+        .card {
+            padding: 25px;
+            border: 1px solid #2b3852;
+            border-radius: 20px;
+            background: #151d30;
+            box-shadow: 0 20px 60px #0005;
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 650;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        input {
+            width: 100%;
+            min-height: 54px;
+            padding: 12px 55px 12px 15px;
+            border: 1px solid #2b3852;
+            border-radius: 12px;
+            outline: none;
+            background: #0e1627;
+            color: #f3f6fc;
+            font-size: 18px;
+        }
+
+        input:focus {
+            border-color: #7cdbad;
+            box-shadow: 0 0 0 3px #7cdbad20;
+        }
+
+        input::placeholder {
+            color: #65728a;
+        }
+
+        .suffix {
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            color: #a7b3c8;
+            pointer-events: none;
+        }
+
+        .hint {
+            margin: 7px 2px 0;
+            color: #a7b3c8;
+            font-size: 13px;
+        }
+
+        button {
+            width: 100%;
+            min-height: 52px;
+            padding: 12px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .calculate-button {
+            background: #7cdbad;
+            color: #10251d;
+        }
+
+        .calculate-button:hover {
+            background: #91e8bd;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .result {
+            display: none;
+            margin-top: 20px;
+            padding: 18px;
+            border: 1px solid #36785d;
+            border-radius: 14px;
+            background: #173d31;
+        }
+
+        .result.visible {
+            display: block;
+        }
+
+        .result-label {
+            color: #b9e8d1;
+            font-size: 14px;
+        }
+
+        .result-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .result-value {
+            font-size: 30px;
+            font-weight: 800;
+            overflow-wrap: anywhere;
+        }
+
+        .copy-button {
+            width: auto;
+            min-height: 40px;
+            padding: 8px 12px;
+            background: #ffffff18;
+            border: 1px solid #ffffff24;
+            color: white;
+            font-size: 13px;
+        }
+
+        .error {
+            min-height: 20px;
+            margin: 10px 2px 0;
+            color: #ff9a9a;
+            font-size: 14px;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #a7b3c8;
+            font-size: 12px;
+        }
+
+        footer strong {
+            color: #cbd6e7;
+        }
+
+        @media (max-width: 420px) {
+            .card {
+                padding: 20px 17px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+
+            .result-value {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <div class="logo">$</div>
+        <h1>MarketCalc</h1>
+        <p class="subtitle">Калькулятор наценки для Supermarket Together</p>
+    </header>
+
+    <main class="card">
+
+        <div class="field">
+            <label for="markup">Процент наценки</label>
+
+            <div class="input-wrapper">
+                <input
+                    type="text"
+                    id="markup"
+                    inputmode="decimal"
+                    value="99"
+                    placeholder="Например, 99"
+                >
+                <span class="suffix">%</span>
+            </div>
+
+        </div>
+
+        <div class="field">
+            <label for="price">Закупочная цена</label>
+
+            <div class="input-wrapper">
+                <input
+                    type="text"
+                    id="price"
+                    inputmode="decimal"
+                    placeholder="Например, 2,50"
+                >
+                <span class="suffix">USD</span>
+            </div>
+        </div>
+
+        <button class="calculate-button" id="calculate">
+            Рассчитать цену
+        </button>
+
+        <p class="error" id="error"></p>
+
+        <div class="result" id="result">
+            <div class="result-label">Цена продажи</div>
+
+            <div class="result-row">
+                <span class="result-value" id="output">—</span>
+
+                <button class="copy-button" id="copy">
+                    Копировать
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        Расчёт выполняется непосредственно в браузере.<br>
+        <strong>Введённые цены никуда не отправляются.</strong>
+    </footer>
+
+</div>
+
+<script>
+    const markupInput = document.getElementById("markup");
+    const priceInput = document.getElementById("price");
+    const resultBox = document.getElementById("result");
+    const output = document.getElementById("output");
+    const errorBox = document.getElementById("error");
+    const copyButton = document.getElementById("copy");
+
+    function parseDecimal(value) {
+        const text = value.trim().replace(",", ".");
+
+        if (!/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(text)) {
+            return null;
+        }
+
+        const [whole = "0", fraction = ""] = text.split(".");
+
+        return {
+            integer: BigInt((whole || "0") + fraction),
+            scale: fraction.length
+        };
+    }
+
+    function power10(n) {
+        return 10n ** BigInt(n);
+    }
+
+    function calculateCents(price, markup) {
+        const numerator =
+            price.integer *
+            (100n * power10(markup.scale) + markup.integer);
+
+        const denominator = power10(price.scale + markup.scale);
+
+        return (numerator * 2n + denominator) / (2n * denominator);
+    }
+
+    function formatEuro(cents) {
+        const euros = cents / 100n;
+        const remainder = (cents % 100n).toString().padStart(2, "0");
+
+        const formattedEuros =
+            new Intl.NumberFormat("de-DE").format(Number(euros));
+
+        return `${formattedEuros},${remainder} $`;
+    }
+
+    function calculate() {
+        errorBox.textContent = "";
+        resultBox.classList.remove("visible");
+        copyButton.textContent = "Копировать";
+
+        const markup = parseDecimal(markupInput.value);
+        const price = parseDecimal(priceInput.value);
+
+        if (markup === null || price === null) {
+            errorBox.textContent =
+                "Введите корректные неотрицательные числа.";
+            return;
+        }
+
+        if (
+            markupInput.value.length > 30 ||
+            priceInput.value.length > 30 ||
+            markup.scale > 12 ||
+            price.scale > 12
+        ) {
+            errorBox.textContent =
+                "Слишком много цифр после запятой или слишком длинное число.";
+            return;
+        }
+
+        const cents = calculateCents(price, markup);
+
+        output.textContent = formatEuro(cents);
+        resultBox.classList.add("visible");
+    }
+
+    document.getElementById("calculate")
+        .addEventListener("click", calculate);
+
+    priceInput.addEventListener("keydown", event => {
+        if (event.key === "Enter") calculate();
+    });
+
+    markupInput.addEventListener("keydown", event => {
+        if (event.key === "Enter") priceInput.focus();
+    });
+
+    copyButton.addEventListener("click", async () => {
+        try {
+            await navigator.clipboard.writeText(output.textContent);
+            copyButton.textContent = "Скопировано!";
+        } catch {
+            copyButton.textContent = "Не удалось";
+        }
+    });
+</script>
+
+</body>
+</html>
