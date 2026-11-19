@@ -11,7 +11,7 @@
         * {
             box-sizing: border-box;
         }
-
+    
         body {
             margin: 0;
             min-height: 100vh;
@@ -19,21 +19,21 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #0b1020;
+            background: #000000;
             color: #f3f6fc;
             font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
         }
-
+    
         .container {
             width: 100%;
             max-width: 440px;
         }
-
+    
         header {
             text-align: center;
             margin-bottom: 25px;
         }
-
+    
         .logo {
             display: inline-flex;
             width: 60px;
@@ -46,60 +46,60 @@
             font-size: 30px;
             font-weight: bold;
         }
-
+    
         h1 {
             margin: 12px 0 3px;
             font-size: 30px;
         }
-
+    
         .subtitle {
             color: #a7b3c8;
             margin: 0;
         }
-
+    
         .card {
             padding: 25px;
-            border: 1px solid #2b3852;
+            border: 1px solid #252525;
             border-radius: 20px;
-            background: #151d30;
-            box-shadow: 0 20px 60px #0005;
+            background: #0a0a0a;
+            box-shadow: 0 20px 60px #0008;
         }
-
+    
         .field {
             margin-bottom: 20px;
         }
-
+    
         label {
             display: block;
             margin-bottom: 8px;
             font-weight: 650;
         }
-
+    
         .input-wrapper {
             position: relative;
         }
-
+    
         input {
             width: 100%;
             min-height: 54px;
             padding: 12px 55px 12px 15px;
-            border: 1px solid #2b3852;
+            border: 1px solid #252525;
             border-radius: 12px;
             outline: none;
-            background: #0e1627;
+            background: #080808;
             color: #f3f6fc;
             font-size: 18px;
         }
-
+    
         input:focus {
             border-color: #7cdbad;
             box-shadow: 0 0 0 3px #7cdbad20;
         }
-
+    
         input::placeholder {
             color: #65728a;
         }
-
+    
         .suffix {
             position: absolute;
             top: 50%;
@@ -108,13 +108,13 @@
             color: #a7b3c8;
             pointer-events: none;
         }
-
+    
         .hint {
             margin: 7px 2px 0;
             color: #a7b3c8;
             font-size: 13px;
         }
-
+    
         button {
             width: 100%;
             min-height: 52px;
@@ -125,38 +125,38 @@
             font-weight: bold;
             cursor: pointer;
         }
-
+    
         .calculate-button {
             background: #7cdbad;
             color: #10251d;
         }
-
+    
         .calculate-button:hover {
             background: #91e8bd;
         }
-
+    
         button:active {
             transform: scale(0.98);
         }
-
+    
         .result {
             display: none;
             margin-top: 20px;
             padding: 18px;
-            border: 1px solid #36785d;
+            border: 1px solid #245c40;
             border-radius: 14px;
-            background: #173d31;
+            background: #0b2117;
         }
-
+    
         .result.visible {
             display: block;
         }
-
+    
         .result-label {
             color: #b9e8d1;
             font-size: 14px;
         }
-
+    
         .result-row {
             display: flex;
             align-items: center;
@@ -164,13 +164,13 @@
             gap: 10px;
             margin-top: 5px;
         }
-
+    
         .result-value {
             font-size: 30px;
             font-weight: 800;
             overflow-wrap: anywhere;
         }
-
+    
         .copy-button {
             width: auto;
             min-height: 40px;
@@ -180,46 +180,46 @@
             color: white;
             font-size: 13px;
         }
-
+    
         .error {
             min-height: 20px;
             margin: 10px 2px 0;
             color: #ff9a9a;
             font-size: 14px;
         }
-
+    
         .subtitle a {
             color: #65b8ff;
             text-decoration: none;
             font-weight: 600;
             transition: color 0.2s ease;
         }
-
+    
         .subtitle a:hover {
             color: #91ceff;
             text-decoration: underline;
         }
-
+    
         footer {
             margin-top: 20px;
             text-align: center;
             color: #a7b3c8;
             font-size: 12px;
         }
-
+    
         footer strong {
             color: #cbd6e7;
         }
-
+    
         @media (max-width: 420px) {
             .card {
                 padding: 20px 17px;
             }
-
+    
             h1 {
                 font-size: 26px;
             }
-
+    
             .result-value {
                 font-size: 26px;
             }
