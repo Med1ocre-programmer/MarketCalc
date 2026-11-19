@@ -377,6 +377,8 @@
 
         output.textContent = formatEuro(cents);
         resultBox.classList.add("visible");
+        priceInput.value = "";
+        priceInput.focus();
     }
 
     document.getElementById("calculate")
