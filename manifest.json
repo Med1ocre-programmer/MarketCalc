@@ -1,0 +1,10 @@
+{
+    "name": "MarketCalc",
+    "short_name": "MarketCalc",
+    "description": "Markup calculator for Supermarket Together",
+    "start_url": "./",
+    "scope": "./",
+    "display": "fullscreen",
+    "background_color": "#000000",
+    "theme_color": "#000000"
+}
